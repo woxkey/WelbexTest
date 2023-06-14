@@ -8,6 +8,7 @@ import {useTranslation} from "react-i18next";
 import MapScreen from "../screens/MapScreen";
 
 
+
 const Tab: any = createBottomTabNavigator<BottomTabNavigatorParamList>();
 
 const BottomTabs = () => {

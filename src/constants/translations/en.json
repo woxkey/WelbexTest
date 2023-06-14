@@ -11,7 +11,9 @@
   "cargo": "Cargo",
   "passenger": "Passenger",
   "special": "Special",
-  "phone": "Phone Number"
+  "phone": "Phone Number",
+  "call": "Call",
+  "text": "Message"
 
 
 }
