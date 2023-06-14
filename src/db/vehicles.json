@@ -1,0 +1,47 @@
+[
+  {
+    "vehicleId": 1,
+    "category": "Грузовой",
+    "driver": "John"
+  },
+  {
+    "vehicleId": 2,
+    "category": "Пассажирский",
+    "driver": "Mark"
+  },
+  {
+    "vehicleId": 3,
+    "category": "Спецтранспорт",
+    "driver": "Alen"
+  },
+  {
+    "vehicleId": 4,
+    "category": "Пассажирский",
+    "driver": "Maria"
+  },
+  {
+    "vehicleId": 5,
+    "category": "Спецтранспорт",
+    "driver": "Maria"
+  },
+  {
+    "vehicleId": 6,
+    "category": "Грузовой",
+    "driver": "Maria"
+  },
+  {
+    "vehicleId": 7,
+    "category": "Грузовой",
+    "driver": "Maria"
+  },
+  {
+    "vehicleId": 8,
+    "category": "Пассажирский",
+    "driver": "Maria"
+  },
+  {
+    "vehicleId": 9,
+    "category": "Пассажирский",
+    "driver": "Maria"
+  }
+]
