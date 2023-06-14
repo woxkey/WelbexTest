@@ -1,47 +1,111 @@
 [
   {
     "vehicleId": 1,
-    "category": "Грузовой",
-    "driver": "John"
+    "category": "cargo",
+    "driver": "John",
+    "coordinate": {
+      "latitude": 51.160522,
+      "longitude": 71.470360
+    },
+    "phone": "7478373376"
   },
   {
     "vehicleId": 2,
-    "category": "Пассажирский",
-    "driver": "Mark"
+    "category": "passenger",
+    "driver": "Mark",
+    "coordinate": {
+      "latitude": 55.755871,
+      "longitude": 37.617680
+    },
+    "phone": "7478373376"
+
   },
   {
     "vehicleId": 3,
-    "category": "Спецтранспорт",
-    "driver": "Alen"
+    "category": "special",
+    "driver": "Alen",
+    "coordinate": {
+      "latitude": 58.993389,
+      "longitude": 54.429890
+    },
+    "phone": "7478373376"
+
   },
   {
     "vehicleId": 4,
-    "category": "Пассажирский",
-    "driver": "Maria"
+    "category": "passenger",
+    "driver": "Margo",
+    "coordinate": {
+      "latitude": 53.299191,
+      "longitude": 60.102070
+    },
+    "phone": "7478373376"
+
   },
   {
     "vehicleId": 5,
-    "category": "Спецтранспорт",
-    "driver": "Maria"
+    "category": "special",
+    "driver": "Joe",
+    "coordinate": {
+      "latitude": 51.507351,
+      "longitude": -0.127758
+    },
+    "phone": "7478373376"
+
   },
   {
     "vehicleId": 6,
-    "category": "Грузовой",
-    "driver": "Maria"
+    "category": "cargo",
+    "driver": "Josh",
+    "coordinate": {
+      "latitude": 35.689487,
+      "longitude": 139.691711
+    },
+    "phone": "7478373376"
+
   },
   {
     "vehicleId": 7,
-    "category": "Грузовой",
-    "driver": "Maria"
+    "category": "cargo",
+    "driver": "Maria",
+    "coordinate": {
+      "latitude": 19.432608,
+      "longitude": -99.133209
+    },
+    "phone": "7478373376"
+
   },
   {
     "vehicleId": 8,
-    "category": "Пассажирский",
-    "driver": "Maria"
+    "category": "passenger",
+    "driver": "Steve",
+    "coordinate": {
+      "latitude": 39.904202,
+      "longitude": 116.407394
+    },
+    "phone": "7478373376"
+
   },
   {
     "vehicleId": 9,
-    "category": "Пассажирский",
-    "driver": "Maria"
+    "category": "passenger",
+    "driver": "Frank",
+    "coordinate": {
+      "latitude": -34.603683,
+      "longitude": -58.381557
+    },
+    "phone": "7478373376"
+
+  },
+  {
+    "vehicleId": 10,
+    "category": "cargo",
+    "driver": "Dan",
+    "coordinate": {
+      "latitude": 40.712776,
+      "longitude": -74.005974
+    },
+    "phone": "7478373376"
+
   }
 ]

@@ -3,8 +3,10 @@ import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 export type HomeStackNavigatorParamList = {
     Home: undefined;
     Details: {
-        name: string;
-        birthYear: string;
+        driver: string;
+        category: string;
+        phone: string,
+        coordinate: ICoordinate
     };
 };
 
@@ -14,6 +16,7 @@ export type HomeScreenNavigationProp = CompositeNavigationProp<BottomTabNavigati
 
 import type {CompositeNavigationProp, RouteProp} from '@react-navigation/native';
 import {BottomTabNavigationProp} from "@react-navigation/bottom-tabs";
+import {ICoordinate} from "../screens/HomeScreen";
 
 export type DetailsScreenRouteProp = RouteProp<
     HomeStackNavigatorParamList,

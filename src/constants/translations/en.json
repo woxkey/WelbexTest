@@ -5,5 +5,13 @@
   "details": "Details",
   "vehicle": "Vehicle",
   "driver": "Driver",
-  "category": "Category"
+  "category": "Category",
+  "apply": "Apply",
+  "select": "Select item",
+  "cargo": "Cargo",
+  "passenger": "Passenger",
+  "special": "Special",
+  "phone": "Phone Number"
+
+
 }

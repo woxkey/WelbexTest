@@ -5,6 +5,7 @@ import HomeStackNavigator from './HomeStack';
 import SettingsScreen from '../screens/SettingsScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useTranslation} from "react-i18next";
+import MapScreen from "../screens/MapScreen";
 
 
 const Tab: any = createBottomTabNavigator<BottomTabNavigatorParamList>();
@@ -35,6 +36,7 @@ const BottomTabs = () => {
                 options={{ headerShown: false, title: t("home") }}
             />
             <Tab.Screen name="Settings" options={{title: t("settings")}} component={SettingsScreen}  />
+            <Tab.Screen name="Map" component={MapScreen}/>
         </Tab.Navigator>
     );
 };
