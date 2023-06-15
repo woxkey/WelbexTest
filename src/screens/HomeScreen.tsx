@@ -1,6 +1,5 @@
 import {StyleSheet, View, Text, Pressable, FlatList, Button} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-
 import {HomeScreenNavigationProp} from "../navigation/types";
 import DATA from "../db/vehicles.json";
 import {useTranslation} from "react-i18next";
