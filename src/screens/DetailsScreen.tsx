@@ -1,4 +1,4 @@
-import {View, Text, Button, Pressable} from 'react-native';
+import {View, Text, Button} from 'react-native';
 import {useRoute} from '@react-navigation/native';
 import {DetailsScreenRouteProp} from "../navigation/types";
 import {useTranslation} from "react-i18next";
@@ -22,7 +22,7 @@ const DetailScreen = () => {
         <Text>{t('driver')}: {driver}</Text>
         <Text>{t('phone')}: {phone}</Text>
         <Button title={t("call")} onPress={() => {
-            Linking.openURL(`tel:${phone}`)
+            Linking.openURL(`tel:+7${phone}`)
         }}/>
         <Button title={t("text")} onPress={() => {
             Linking.openURL('whatsapp://send?text=' + "Добрый день, подскажите пожалуйста, какой номер заказа у вас сейчас в работе" + '&phone=7' + phone);

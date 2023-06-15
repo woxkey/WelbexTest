@@ -1,13 +1,11 @@
-import {StyleSheet, View, Text, Pressable, FlatList, Button, Switch} from 'react-native';
+import {StyleSheet, View, Text, Pressable, FlatList, Button} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {HomeScreenNavigationProp} from "../navigation/types";
 import DATA from "../db/vehicles.json";
 import {useTranslation} from "react-i18next";
-import React, {useEffect, useState} from "react";
-import DropDownPicker from 'react-native-dropdown-picker';
+import React, {useState} from "react";
 import {Dropdown} from "react-native-element-dropdown";
-import AntDesign from '@expo/vector-icons/AntDesign';
 import MapScreen from "./MapScreen";
 
 export interface ICoordinate {
@@ -31,11 +29,10 @@ const HomeScreen = () => {
     const navigation = useNavigation<HomeScreenNavigationProp>();
     const {t} = useTranslation();
     const [vehicles, setVehicles] = useState(DATA);
-    const [value, setValue] = useState<any>(null);
+    const [value, setValue] = useState<string | null>(null);
     const [isFocus, setIsFocus] = useState(false);
     const data = [{label: t("cargo"), value: 'cargo'}, {
-        label: t("passenger"),
-        value: 'passenger'
+        label: t("passenger"), value: 'passenger'
     }, {label: t("special"), value: 'special'},];
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
@@ -48,34 +45,37 @@ const HomeScreen = () => {
 
     const renderListItems = ({item}: IMyData) => {
         return (<Pressable
-                onPress={() => navigation.navigate("Details", {
-                    driver: item.driver, category: item.category, phone: item.phone, coordinate: item.coordinate
-                })}
+            onPress={() => navigation.navigate("Details", {
+                driver: item.driver, category: item.category, phone: item.phone, coordinate: item.coordinate
+            })}
+        >
+            <Text
+                style={{fontSize: 18, paddingHorizontal: 12, paddingVertical: 12}}
             >
-                <Text
-                    style={{fontSize: 18, paddingHorizontal: 12, paddingVertical: 12}}
-                >
-                    {t("vehicle")}#{item.vehicleId}
-                </Text>
-                <Text
-                    style={{fontSize: 18, paddingHorizontal: 12, paddingVertical: 12}}
-                >
-                    {t("driver")}: {item.driver}
-                </Text>
-                <Text
-                    style={{fontSize: 18, paddingHorizontal: 12, paddingVertical: 12}}
-                >
-                    {t("category")}: {t(`${item.category.toLowerCase()}`)}
-                </Text>
-                <View
-                    style={{
-                        borderWidth: StyleSheet.hairlineWidth, borderColor: '#ccc',
-                    }}
-                />
-            </Pressable>);
+                {t("vehicle")}#{item.vehicleId}
+            </Text>
+            <Text
+                style={{fontSize: 18, paddingHorizontal: 12, paddingVertical: 12}}
+            >
+                {t("driver")}: {item.driver}
+            </Text>
+            <Text
+                style={{fontSize: 18, paddingHorizontal: 12, paddingVertical: 12}}
+            >
+                {t("category")}: {t(`${item.category.toLowerCase()}`)}
+            </Text>
+            <View
+                style={{
+                    borderWidth: StyleSheet.hairlineWidth, borderColor: '#ccc',
+                }}
+            />
+        </Pressable>);
     };
 
-    return (<View style={{flex: 1, paddingTop: 10, marginHorizontal: 10}}>
+    return (<>
+        <Button title={isEnabled ? t("showList") : t("show")} onPress={toggleSwitch}/>
+        {!isEnabled ?
+            <View style={{flex: 1, paddingTop: 10, marginHorizontal: 10}}>
             <Dropdown
                 style={[styles.dropdown, isFocus && {borderColor: 'blue'}]}
                 placeholderStyle={styles.placeholderStyle}
@@ -98,9 +98,10 @@ const HomeScreen = () => {
                 }}
             />
             <Button title={t("apply")} accessibilityLabel="Применить" onPress={handleButton}/>
-            <Button title={isEnabled ? t("showList") : t("show")} onPress={toggleSwitch} />
-            {isEnabled ? <MapScreen vehicles={vehicles}/> : <FlatList data={vehicles} renderItem={renderListItems}/>}
-        </View>);
+            <FlatList data={vehicles} renderItem={renderListItems}/>
+        </View> : <MapScreen vehicles={DATA}/>}
+
+    </>);
 };
 
 export default HomeScreen;

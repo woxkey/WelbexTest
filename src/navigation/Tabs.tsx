@@ -1,15 +1,13 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { BottomTabNavigatorParamList } from './types';
 import HomeStackNavigator from './HomeStack';
 import SettingsScreen from '../screens/SettingsScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useTranslation} from "react-i18next";
-import MapScreen from "../screens/MapScreen";
 
 
 
-const Tab: any = createBottomTabNavigator<BottomTabNavigatorParamList>();
+const Tab = createBottomTabNavigator();
 
 const BottomTabs = () => {
     const { t } = useTranslation();
@@ -26,7 +24,7 @@ const BottomTabs = () => {
                         iconName = focused ? 'ios-settings' : 'ios-settings-outline';
                     }
 
-                    return <Ionicons name={iconName} size={size} color={color} />;
+                    return <Ionicons name={iconName || ''} size={size} color={color} />;
                 },
                 tabBarActiveTintColor: 'black',
                 tabBarInactiveTintColor: 'gray',
@@ -34,9 +32,9 @@ const BottomTabs = () => {
             <Tab.Screen
                 name="HomeStack"
                 component={HomeStackNavigator}
-                options={{ headerShown: false, title: t("home") }}
+                options={{ headerShown: false, title: t("home") || "Home" }}
             />
-            <Tab.Screen name="Settings" options={{title: t("settings")}} component={SettingsScreen}  />
+            <Tab.Screen name="Settings" options={{title: t("settings") || "Settings"}} component={SettingsScreen}  />
         </Tab.Navigator>
     );
 };

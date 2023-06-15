@@ -12,6 +12,5 @@ export default function App() {
                 <StatusBar style="auto"/>
             </I18nextProvider>
 
-        </>
-    );
+        </>);
 }
