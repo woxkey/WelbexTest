@@ -1,4 +1,4 @@
-import {StyleSheet, View, Text, Pressable, FlatList, Button} from 'react-native';
+import {StyleSheet, View, Text, Pressable, FlatList, Button, Switch} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {HomeScreenNavigationProp} from "../navigation/types";
@@ -8,18 +8,21 @@ import React, {useEffect, useState} from "react";
 import DropDownPicker from 'react-native-dropdown-picker';
 import {Dropdown} from "react-native-element-dropdown";
 import AntDesign from '@expo/vector-icons/AntDesign';
+import MapScreen from "./MapScreen";
 
 export interface ICoordinate {
     longitude: number,
     latitude: number,
 }
-interface IData {
+
+export interface IData {
     vehicleId: number,
     category: string,
     driver: string,
     phone: string,
     coordinate: ICoordinate
 }
+
 interface IMyData {
     item: IData;
 }
@@ -30,11 +33,12 @@ const HomeScreen = () => {
     const [vehicles, setVehicles] = useState(DATA);
     const [value, setValue] = useState<any>(null);
     const [isFocus, setIsFocus] = useState(false);
-    const data = [
-        { label: t("cargo"), value: 'cargo' },
-        { label: t("passenger"), value: 'passenger' },
-        { label: t("special"), value: 'special' },
-    ];
+    const data = [{label: t("cargo"), value: 'cargo'}, {
+        label: t("passenger"),
+        value: 'passenger'
+    }, {label: t("special"), value: 'special'},];
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
     const handleButton = () => {
         if (!value) return;
@@ -42,47 +46,38 @@ const HomeScreen = () => {
         setVehicles(filtered)
     }
 
-    const renderListItems = ({ item }: IMyData) => {
-        return (
-            <Pressable
-                onPress={() =>
-                    navigation.navigate("Details", {
-                        driver: item.driver,
-                        category: item.category,
-                        phone: item.phone,
-                        coordinate: item.coordinate
-                    })
-                }
+    const renderListItems = ({item}: IMyData) => {
+        return (<Pressable
+                onPress={() => navigation.navigate("Details", {
+                    driver: item.driver, category: item.category, phone: item.phone, coordinate: item.coordinate
+                })}
             >
                 <Text
-                    style={{ fontSize: 18, paddingHorizontal: 12, paddingVertical: 12 }}
+                    style={{fontSize: 18, paddingHorizontal: 12, paddingVertical: 12}}
                 >
                     {t("vehicle")}#{item.vehicleId}
                 </Text>
                 <Text
-                    style={{ fontSize: 18, paddingHorizontal: 12, paddingVertical: 12 }}
+                    style={{fontSize: 18, paddingHorizontal: 12, paddingVertical: 12}}
                 >
                     {t("driver")}: {item.driver}
                 </Text>
                 <Text
-                    style={{ fontSize: 18, paddingHorizontal: 12, paddingVertical: 12 }}
+                    style={{fontSize: 18, paddingHorizontal: 12, paddingVertical: 12}}
                 >
                     {t("category")}: {t(`${item.category.toLowerCase()}`)}
                 </Text>
                 <View
                     style={{
-                        borderWidth: StyleSheet.hairlineWidth,
-                        borderColor: '#ccc',
+                        borderWidth: StyleSheet.hairlineWidth, borderColor: '#ccc',
                     }}
                 />
-            </Pressable>
-        );
+            </Pressable>);
     };
 
-    return (
-        <View style={{ flex: 1, paddingTop: 10, marginHorizontal: 10 }}>
+    return (<View style={{flex: 1, paddingTop: 10, marginHorizontal: 10}}>
             <Dropdown
-                style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
+                style={[styles.dropdown, isFocus && {borderColor: 'blue'}]}
                 placeholderStyle={styles.placeholderStyle}
                 selectedTextStyle={styles.selectedTextStyle}
                 inputSearchStyle={styles.inputSearchStyle}
@@ -103,29 +98,21 @@ const HomeScreen = () => {
                 }}
             />
             <Button title={t("apply")} accessibilityLabel="Применить" onPress={handleButton}/>
-            <FlatList data={vehicles} renderItem={renderListItems} />
-        </View>
-    );
+            <Button title={isEnabled ? t("showList") : t("show")} onPress={toggleSwitch} />
+            {isEnabled ? <MapScreen vehicles={vehicles}/> : <FlatList data={vehicles} renderItem={renderListItems}/>}
+        </View>);
 };
 
 export default HomeScreen;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
-        padding: 16,
-    },
-    dropdown: {
-        height: 50,
-        borderColor: 'gray',
-        borderWidth: 0.5,
-        borderRadius: 8,
-        paddingHorizontal: 8,
-    },
-    icon: {
+        backgroundColor: 'white', padding: 16,
+    }, dropdown: {
+        height: 50, borderColor: 'gray', borderWidth: 0.5, borderRadius: 8, paddingHorizontal: 8,
+    }, icon: {
         marginRight: 5,
-    },
-    label: {
+    }, label: {
         position: 'absolute',
         backgroundColor: 'white',
         left: 22,
@@ -133,19 +120,13 @@ const styles = StyleSheet.create({
         zIndex: 999,
         paddingHorizontal: 8,
         fontSize: 14,
-    },
-    placeholderStyle: {
+    }, placeholderStyle: {
         fontSize: 16,
-    },
-    selectedTextStyle: {
+    }, selectedTextStyle: {
         fontSize: 16,
-    },
-    iconStyle: {
-        width: 20,
-        height: 20,
-    },
-    inputSearchStyle: {
-        height: 40,
-        fontSize: 16,
+    }, iconStyle: {
+        width: 20, height: 20,
+    }, inputSearchStyle: {
+        height: 40, fontSize: 16,
     },
 });

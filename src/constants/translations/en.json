@@ -13,7 +13,10 @@
   "special": "Special",
   "phone": "Phone Number",
   "call": "Call",
-  "text": "Message"
+  "text": "Message",
+  "show": "Show on map",
+  "showList": "Show list"
+
 
 
 }

@@ -25,7 +25,7 @@ const DetailScreen = () => {
             Linking.openURL(`tel:${phone}`)
         }}/>
         <Button title={t("text")} onPress={() => {
-            Linking.openURL(`tel:${phone}`)
+            Linking.openURL('whatsapp://send?text=' + "Добрый день, подскажите пожалуйста, какой номер заказа у вас сейчас в работе" + '&phone=7' + phone);
         }}/>
 
     </View>);

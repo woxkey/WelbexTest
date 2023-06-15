@@ -37,7 +37,6 @@ const BottomTabs = () => {
                 options={{ headerShown: false, title: t("home") }}
             />
             <Tab.Screen name="Settings" options={{title: t("settings")}} component={SettingsScreen}  />
-            <Tab.Screen name="Map" component={MapScreen}/>
         </Tab.Navigator>
     );
 };
