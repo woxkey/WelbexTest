@@ -1,5 +1,6 @@
 ## Installation
 ```sh
+cd WelbexTest
 npm i
-expo start
+expo start || npm run start
 ```
